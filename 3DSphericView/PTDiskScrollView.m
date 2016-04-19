@@ -44,8 +44,6 @@
         self.ovalRadiusA = ovalSize.width/2;
         self.ovalRadiusB = ovalSize.height/2;
         
-        
-        
     }
     return self;
 }
@@ -60,6 +58,10 @@
     self.ovalRadiusA = ovalSize.width/2;
     self.ovalRadiusB = ovalSize.height/2;
     [self reloadData];
+}
+
+-(void)resetPosition{
+    [self updateScrollViewWithDelta:0];
 }
 
 -(void)reloadData {
@@ -89,9 +91,8 @@
             [self.viewArray addObject:cell];
         }
     }
-    
     [self updateScrollViewWithDelta:0];
-
+    [self animateCellExpansion];
 }
 
 
@@ -188,7 +189,7 @@
     
     //计算伪景深的透视形变
     for(NSInteger index = 0 ; index < angleDeltaArray.count; index++){
-        UILabel* view = _viewArray[index];
+        PTDiskScrollViewCell* view = _viewArray[index];
         
         // transform
         NSInteger deltaNew = [angleDeltaArray[index] integerValue] - delta;
@@ -211,11 +212,27 @@
         return yA > yB;
     }];
 
-    for(UILabel *view in sortedArray){
+    for(PTDiskScrollViewCell *view in sortedArray){
         [self bringSubviewToFront:view];
     }
     
     //[self logItemInfo];
+}
+
+-(void)animateCellExpansion{
+    NSInteger index = 0;
+    for(PTDiskScrollViewCell *view in self.viewArray){
+        CGPoint originalCenter = view.center;
+        
+        view.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+        [UIView animateWithDuration:0.8 delay:0.1*index usingSpringWithDamping:0.7
+              initialSpringVelocity:0.6 options:UIViewAnimationOptionCurveEaseIn  animations:^(){
+                  
+                  view.center = originalCenter;
+              } completion:^(BOOL finished) { }];
+        index++;
+    }
+
 }
 
 -(void)updateAngleDeltaArray{

@@ -21,14 +21,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self performSelector:@selector(launchDiskView) withObject:nil afterDelay:0.3];
+
+}
+
+-(void)launchDiskView{
     self.diskView.center = self.view.center;
     [self.view addSubview:self.diskView];
-
 }
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
     self.diskView.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.width);
-    [self.diskView reloadData];
+    [self.diskView resetPosition];
 }
 
 //-(void)changeOvalSize{
