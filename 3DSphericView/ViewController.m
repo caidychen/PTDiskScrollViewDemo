@@ -23,8 +23,17 @@
     
     self.diskView.center = self.view.center;
     [self.view addSubview:self.diskView];
- 
+
 }
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    self.diskView.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.width);
+    [self.diskView reloadData];
+}
+
+//-(void)changeOvalSize{
+//    self.diskView.ovalSize = CGSizeMake(arc4random()%400+100, arc4random()%400+100);
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

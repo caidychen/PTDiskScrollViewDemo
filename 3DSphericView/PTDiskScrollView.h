@@ -13,9 +13,9 @@
 
 @interface PTDiskScrollView : UIView
 @property (nonatomic, weak) id<PTDiskScrollViewDelegate>delegate;
-@property (nonatomic, assign) CGSize ovalSize;
+@property (nonatomic, assign) CGSize ovalSize;                          // RadiusA = OvalSize.width/2, RadiusB = OvalSize.height/2
 -(instancetype)initWithFrame:(CGRect)frame ovalSize:(CGSize)ovalSize;
--(void)reloadData;
+-(void)reloadData;                                                      // Refresh data and redraw everything
 @end
 
 @protocol PTDiskScrollViewDelegate <NSObject>

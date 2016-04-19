@@ -55,6 +55,13 @@
     [self reloadData];
 }
 
+-(void)setOvalSize:(CGSize)ovalSize{
+    _ovalSize = ovalSize;
+    self.ovalRadiusA = ovalSize.width/2;
+    self.ovalRadiusB = ovalSize.height/2;
+    [self reloadData];
+}
+
 -(void)reloadData {
     
     angleDeltaArray = [[NSMutableArray alloc] init];
@@ -86,6 +93,7 @@
     [self updateScrollViewWithDelta:0];
 
 }
+
 
 -(void)didSelectItem:(UIControl *)item{
    //NSLog(@"Did select at index: %ld",(long)item.tag);
