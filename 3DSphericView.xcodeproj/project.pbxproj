@@ -16,6 +16,7 @@
 		C64B186A1CC0859C005CEFB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C64B18681CC0859C005CEFB8 /* Main.storyboard */; };
 		C64B186C1CC0859C005CEFB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64B186B1CC0859C005CEFB8 /* Assets.xcassets */; };
 		C64B186F1CC0859C005CEFB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C64B186D1CC0859C005CEFB8 /* LaunchScreen.storyboard */; };
+		C6F2D4AB1CC7785B00339C95 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F2D4AA1CC7785B00339C95 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C64B18701CC0859C005CEFB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C64B18761CC0D426005CEFB8 /* PTDiskScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDiskScrollView.h; sourceTree = "<group>"; };
 		C64B18771CC0D426005CEFB8 /* PTDiskScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDiskScrollView.m; sourceTree = "<group>"; };
+		C6F2D4AA1CC7785B00339C95 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6F2D4AB1CC7785B00339C95 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +53,7 @@
 		C64B18531CC0859C005CEFB8 = {
 			isa = PBXGroup;
 			children = (
+				C6F2D4AA1CC7785B00339C95 /* StoreKit.framework */,
 				C64B185E1CC0859C005CEFB8 /* 3DSphericView */,
 				C64B185D1CC0859C005CEFB8 /* Products */,
 			);

@@ -8,9 +8,10 @@
 
 #import "ViewController.h"
 #import "PTDiskScrollView.h"
+#import <StoreKit/StoreKit.h>
 #import <math.h>
 
-@interface ViewController () <PTDiskScrollViewDelegate>
+@interface ViewController () <PTDiskScrollViewDelegate, SKStoreProductViewControllerDelegate>
 @property (nonatomic, strong) PTDiskScrollView *diskView;
 //@property (nonatomic, assign) CGPoint previousPoint;
 @end
@@ -61,6 +62,7 @@
 
 -(void)scrollView:(PTDiskScrollView *)scrollView didSelectItemAtIndex:(NSInteger)index{
     NSLog(@"PTDiskScrollView did select index:%ld",(long)index);
+    [self showMyApps];
 }
 
 -(void)scrollViewDidBeginScrolling:(PTDiskScrollView *)scrollView{
@@ -71,6 +73,30 @@
      NSLog(@"PTDiskScrollView did end scrolling");
 }
 
+-(void)showMyApps
+{
+    SKStoreProductViewController* spvc = [[SKStoreProductViewController alloc] init];
+    [spvc loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : @"1071377582"}
+                    completionBlock:^(BOOL result, NSError *error)  {
+                        if (result) {
+                            //show
+                            
+                        }else {
+                            NSLog(@"ERROR WITH STORE CONTROLLER %@\n", error.description);
+                            //redirect to app store
+                            //[[UIApplication sharedApplication] openURL:[[self class] appStoreURL]];
+                        }
+                    }];
+    spvc.delegate = self;
+    [self presentViewController:spvc animated:YES completion:nil];
+    
+}
+
+-(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Getters/Setters
 -(PTDiskScrollView *)diskView{
     if (!_diskView) {
@@ -79,5 +105,6 @@
     }
     return _diskView;
 }
+
 
 @end

@@ -16,7 +16,7 @@
 @property (nonatomic, assign) CGSize ovalSize;                          // RadiusA = OvalSize.width/2, RadiusB = OvalSize.height/2
 -(instancetype)initWithFrame:(CGRect)frame ovalSize:(CGSize)ovalSize;
 -(void)reloadData;                                                      // Refresh data and redraw everything
--(void)resetPosition;
+-(void)resetPosition;                                                   // Mainly used when device orientation has been changed
 @end
 
 @protocol PTDiskScrollViewDelegate <NSObject>
